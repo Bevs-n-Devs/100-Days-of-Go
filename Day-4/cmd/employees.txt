@@ -1,0 +1,6 @@
+101,John,Doe,Engineering,75000,2018-05-21,Full-Time,john.doe@company.com
+102,Jane,Smith,HR,68000,2017-11-03,Full-Time,jane.smith@company.com
+103,Bob,Brown,Marketing,55000,2019-07-15,Part-Time,bob.brown@company.com
+104,Alice,Johnson,Finance,80000,2016-09-12,Full-Time,alice.johnson@company.com
+105,Mary,Lee,Engineering,72000,2020-01-05,Full-Time,mary.lee@company.com
+106,Mark,Williams,Sales,60000,2019-03-28,Part-Time,mark.williams@company.com
