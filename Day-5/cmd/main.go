@@ -49,6 +49,38 @@ func swap(a, b *int) {
 	*a, *b = *b, *a // dereference pointers to swap values
 }
 
+// Pointers are ver useful when working with structs.
+// Instead of passing a large struct by value (which copies the struct), you can pass a pointer
+type Person struct {
+	name string
+	age  int
+}
+
+func updatePerson(p *Person) {
+	p.name = "Updated Name" // modify the struct through the pointer
+}
+
+// Slices & Maps behave like reference types, meaning they automatically point to the underlying data.
+// You don't need to use pointers explicitly when passing slices or maps to functions.
+func modifySlice(s []int) {
+	s[0] = 100 // modifies the orginal slice
+}
+
+// task 2
+func doubleValue(n *int) {
+	*n = *n * 2
+}
+
+// task 3
+type Book struct {
+	title  string
+	author string
+}
+
+func updateBook(b *Book) {
+	b.title = "New Title"
+}
+
 func main() {
 	fmt.Println("Hello world, hello Yaw!")
 	fmt.Println("Pointers and Memory Management")
@@ -81,4 +113,64 @@ func main() {
 
 	swap(&num1, &num2) // pass the memory address of num1 & num2
 	fmt.Println("After swap: num1 = ", num1, ", num2 = ", num2)
+
+	fmt.Println("\nPointers and Structs")
+	person := Person{name: "Yaw", age: 38}
+	fmt.Println("Before update:", person)
+
+	// we pass the memory address of person using &person,
+	// allowing the function to directly modify the original struct
+
+	updatePerson(&person)                // pass the pointer to the person struct
+	fmt.Println("After update:", person) // the original struct has been modified
+
+	fmt.Println("\nPointrers with Slices and Maps")
+	nums := []int{1, 2, 3}
+	fmt.Println("Before modifying slice:", nums)
+
+	modifySlice(nums)                        // passing the slice by value, but it acts like a reference
+	fmt.Println("Afetr modify slice:", nums) // the original slice modified
+
+	fmt.Println("\nDay 5 Tasks")
+
+	fmt.Println("\nTask 1 - modify int variable")
+	myAge := 37
+	fmt.Println("Current age:", myAge)
+	age := &myAge
+
+	*age = 38
+	println("New age:", myAge)
+
+	fmt.Println("\nTask 2 - modify int variable via function")
+	originalNumber := 10
+	fmt.Println("Original number:", originalNumber)
+	doubleValue(&originalNumber)
+	fmt.Println("Doubled number:", originalNumber)
+
+	fmt.Println("\nTask 3 - modify struct")
+	myBook := Book{title: "100 Days of Go", author: "Yaw Akoto"}
+	fmt.Println("My book before update:", myBook)
+	updateBook(&myBook)
+	fmt.Println("My book after update:", myBook)
+
+	fmt.Println("\nTask 4 - pointer safety")
+	var n *string
+
+	if n == nil {
+		fmt.Println("This pointer n is empty:", n)
+		y := "yAW"
+		fmt.Println("new var y:", y)
+		n = &y
+		*n = "Yaw Akoto"
+		fmt.Println("This pointer n is no longer empty:", *n)
+		fmt.Println("Updated var y:", y)
+	}
+
+	fmt.Println("")
+	todoListExercise()
 }
+
+// When to Use Pointers?
+// Efficiency: If you are dealing with large structs or arrays, passing by value can be inefficient. Use pointers to avoid copying large amounts of data.
+// Modifying Values: If you need to modify a variable inside a function, use pointers to pass a reference to the variable.
+// Avoiding Nil Pointer Dereferencing: Always check that a pointer is non-nil before dereferencing it, or you will encounter a runtime panic.
