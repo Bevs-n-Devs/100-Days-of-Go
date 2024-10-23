@@ -25,6 +25,19 @@ func (p *Person) pointerReciever() {
 	p.age++ // this will affect the original struct
 }
 
+// Go doesn’t have traditional object-oriented inheritance, but you can achieve similar behavior through struct embedding.
+// One struct can include another struct, which allows you to group related functionality.
+type Address struct {
+	city    string
+	country string
+}
+
+type People struct {
+	name    string
+	age     int
+	Address // Embedded struct
+}
+
 func main() {
 	fmt.Println("Hello world, hello Yaw!")
 	fmt.Println("\nStructs and Methods")
@@ -69,6 +82,37 @@ func main() {
 	fmt.Println("Age after incrementing:", person4.age)
 
 	bankBalanceExercise()
+
+	// anonymous structs - useful when for small temporary task and don't want to define a separate named type
+	// they are good for quick throwaway data structures that don't need to be reused throughout the program
+	fmt.Println("\nAnonymous Structs")
+	person := struct {
+		name string
+		age  int
+	}{
+		name: "John",
+		age:  34,
+	}
+
+	// access the fields
+	fmt.Println("Name:", person.name)
+	fmt.Println("Age:", person.age)
+
+	fmt.Println("\nComposition and Emdedding Structs")
+	randomPerson := People{
+		name: "Max",
+		age:  40,
+		Address: Address{
+			city:    "London",
+			country: "UK",
+		},
+	}
+
+	// access field of both stuct and embedded struct
+	fmt.Println("Name:", randomPerson.name)
+	fmt.Println("Age:", randomPerson.age)
+	fmt.Println("City:", randomPerson.city)
+	fmt.Println("Country:", randomPerson.country)
 }
 
 // When to Use Value vs Pointer Receivers?
