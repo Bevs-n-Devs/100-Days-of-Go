@@ -47,4 +47,6 @@ func main() {
 	fmt.Println("\nExercise 2:")
 	exercise2()
 
+	guessingGame()
+
 }
