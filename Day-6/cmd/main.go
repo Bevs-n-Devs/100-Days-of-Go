@@ -113,6 +113,8 @@ func main() {
 	fmt.Println("Age:", randomPerson.age)
 	fmt.Println("City:", randomPerson.city)
 	fmt.Println("Country:", randomPerson.country)
+
+	twoSumAlgorithm()
 }
 
 // When to Use Value vs Pointer Receivers?
