@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"strings"
 )
 
 /*
@@ -26,6 +27,18 @@ From this, you can derive other contexts with specific configurations.
 
 func main() {
 	fmt.Println("Hello world, hello Yaw!")
+
+	fmt.Println("\n", strings.Repeat("*", 4), "Sliding Window Algorithm: Best Time to Buy and Sell Stock", strings.Repeat("*", 4))
+	// create test cases
+	case1 := []int{7, 1, 5, 3, 6, 4}
+	case2 := []int{7, 6, 4, 3, 1}
+
+	result1 := maxProfit(case1)
+	fmt.Println("prices = [7,1,5,3,6,4], result:", result1)
+
+	result2 := maxProfit(case2)
+	fmt.Println("prices = [7,6,4,3,1], result:", result2)
+
 	fmt.Println("\nContext Package - Managing Timeouts, Cancellation, and Deadlines in Go")
 
 	ctx := context.Background() // create a root context
@@ -42,4 +55,5 @@ func main() {
 	usingContextWithValues()
 
 	realWorldApplication()
+
 }
