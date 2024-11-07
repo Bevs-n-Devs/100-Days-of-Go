@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Test</title>
+</head>
+<body>
+    <h1>WebSocket Test</h1>
+    <script>
+        const socket1 = new WebSocket("ws://localhost:8080/ws1");
+
+        socket1.onopen = () => {
+            console.log("Connected to WebSocket server");
+            socket1.send("Hello Server 1!"); // Send a test message
+        };
+
+        socket1.onmessage = (event) => {
+            console.log("Message from server:", event.data);
+        };
+
+        socket1.onerror = (error) => {
+            console.error("WebSocket error:", error);
+        };
+
+        socket1.onclose = () => {
+            console.log("Disconnected from WebSocket server");
+        };
+
+        const socket2 = new WebSocket("ws://localhost:8080/ws2");
+
+        socket2.onopen = () => {
+            console.log("Connected to WebSocket server");
+            socket2.send("Hello Server 2!"); // Send a test message
+        };
+
+        socket2.onmessage = (event) => {
+            console.log("Message from server:", event.data);
+        };
+
+        socket2.onerror = (error) => {
+            console.error("WebSocket error:", error);
+        };
+
+        socket2.onclose = () => {
+            console.log("Disconnected from WebSocket server");
+        };
+    </script>
+</body>
+</html>
