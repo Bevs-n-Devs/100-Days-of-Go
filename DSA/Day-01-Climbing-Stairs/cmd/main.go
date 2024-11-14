@@ -21,33 +21,27 @@ Explanation: There are three ways to climb to the top:
 // returns the number of ways to climb n stairs
 func climbStairs(n int) int {
 	// check numbers of stairs is equal to 1
-	if n == 1 {
-		return 1
-	}
-
-	// check if num stairs equal to 2
-	if n == 2 {
-		return 2
+	if n <= 3 {
+		return n
 	}
 
 	// initial first three steps
-	oneStepBefore := 1  // ways to reach step 1
-	twoStepsBefore := 2 // ways to rech step 2
-	result := oneStepBefore + twoStepsBefore
+	n1 := 2 // ways to reach step 2
+	n2 := 3 // ways to rech step 3
 
 	// loop from steps 2 up to n, using previous 2 steps
-	for i := 2; i < n; i++ {
-		result = oneStepBefore + twoStepsBefore
+	for i := 4; i < n+1; i++ {
+		result := n1 + n2
 
-		// move twoStepsBefore by one step
-		twoStepsBefore = oneStepBefore
+		// move n2 by one step
+		n1 = n2
 
-		// update the oneStepBefore to be the result
-		oneStepBefore = result
+		// update the n1 to be the result
+		n2 = result
 	}
 
-	// result will be the number of ways to reach n stairs
-	return result
+	// result will be the number of ways to reach n stairs -> n2
+	return n2
 }
 
 func main() {
