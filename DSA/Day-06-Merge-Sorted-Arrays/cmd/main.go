@@ -22,7 +22,7 @@ The result of the merge is [1,2,2,3,5,6] with the underlined elements coming fro
 func main() {
 	fmt.Println("Hello world, hello Yaw!")
 
-	fmt.Println("\nMerge Sorted Arrays - Leetcode #88")
+	fmt.Println("\nDay 6 of DSA: Merge Sorted Arrays - Leetcode #88")
 
 	case1_nums1 := []int{1, 2, 3, 0, 0, 0}
 	case1_m := 3
