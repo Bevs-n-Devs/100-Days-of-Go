@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TODO App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1>TODO App</h1>
+        <form action="/todos/" method="POST">
+            <label for="task">New Task:</label>
+            <input type="text" name="Task" id="task" required>
+            <button type="submit">Add Task</button>
+        </form>
+
+        <h2>Your Tasks</h2>
+        <ul id="tasks">
+            <!-- tasks will be rendered here -->
+            {{ range . }}
+                <li>{{ .Task }}</li>
+            {{ end }}
+        </ul>
+    </body>
+</html>
