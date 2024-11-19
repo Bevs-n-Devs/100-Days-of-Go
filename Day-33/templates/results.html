@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Quiz Results</h1>
+    <ul>
+        {{ range . }}
+        <li>
+            <strong>Question:</strong> {{ .question }} <br>
+            <strong>Your Answer:</strong> {{ .yourAnswer }} <br>
+            <strong>Correct Answer:</strong> {{ .correct }} <br>
+            <strong>Result:</strong> {{ .result }}
+        </li>
+        {{ end }}
+    </ul>
+    <a href="/quiz">Try Again</a>
+</body>
+</html>
