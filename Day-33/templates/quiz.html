@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Quiz</h1>
+    <form action="/quiz/" method="POST">
+        {{ range . }}
+        <div>
+            <p>{{ .ID }}. {{ .Question }}</p>
+            {{ range $index, $option := .Options }}
+
+            <select name="{{ $.ID }}" id="q{{ $.ID }}_{{ $index }}">
+                <option value="">Please select an option</option>
+                <option value="{{ $option }}">{{ $option }}</option>
+            </select>
+            {{ end }}
+        </div>
+        {{ end }}
+        <button type="submit">Submit Quiz</button>
+    </form>
+</body>
+</html>
